@@ -27,3 +27,6 @@ def techstack(request):
 
 def stack(request):
     return render(request, 'skills/stack.html')
+
+def achievements(request):
+    return render(request, 'skills/achievements.html')

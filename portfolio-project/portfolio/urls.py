@@ -18,5 +18,6 @@ urlpatterns = [
     path('count/',skills.views.count,name='count'),
     path('techstack/',skills.views.techstack,name='techstack'),
     path('stack/',skills.views.stack,name='stack'),
+    path('achievements/',skills.views.achievements,name='achievements'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
