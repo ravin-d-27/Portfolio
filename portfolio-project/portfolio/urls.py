@@ -17,5 +17,6 @@ urlpatterns = [
     path('likecount/',skills.views.likecount,name='likecount'),
     path('count/',skills.views.count,name='count'),
     path('techstack/',skills.views.techstack,name='techstack'),
+    path('stack/',skills.views.stack,name='stack'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

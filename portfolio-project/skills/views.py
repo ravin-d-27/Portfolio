@@ -24,3 +24,6 @@ def count(request):
 def techstack(request):
     skills = Skill.objects
     return render(request, 'skills/tech_stack.html',{'skills':skills})
+
+def stack(request):
+    return render(request, 'skills/stack.html')
