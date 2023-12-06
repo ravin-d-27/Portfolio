@@ -76,45 +76,23 @@
   <br />
   <br />
 {% for blog in blogs.all %}
-  <div class="container marketing">
+    
 
-    <!-- <img class="bd-placeholder-img rounded-circle" width="140" height="140" src='{{ blog.image.url }}' > -->
-
-    <!--
-    <div class="row">
-
-{% for blog in blogs.all %}
-      <div class="col-lg-4">
-        <p align='center'>
-        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src='{{ blog.image.url }}' >
-        </p>
-        <h2><p align='center'>{{ blog.title }}</p></h2>
-        <p align='center'><small class="text-muted">{{ blog.pub_date }}</small></p>
-        <p align='center'>{{ blog.body }}</p>
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{ blog.image.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
       </div>
-{% endfor %}
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ blog.title }}</h1>
+        <p align='right'><small class="text-muted">{{ blog.pub_date }}</small></p>
+        <p class="lead">{{ blog.body }}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        </div>
+      </div>
     </div>
   </div>
-      <br />
--->
 
-    <!-- START THE FEATURETTES -->
-
-<hr class="featurette-divider">
-
-  <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">{{ blog.title }}</h2>
-        <p align='right'><small class="text-muted">{{ blog.pub_date }}</small></p>
-        <br />
-        <p class="lead">{{ blog.body }}</p>
-      </div>
-      <div class="col-md-5">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src='{{ blog.image.url }}'>
-
-      </div>
-    </div>
-  </div><!-- /.container -->
 {% endfor %}
 
 

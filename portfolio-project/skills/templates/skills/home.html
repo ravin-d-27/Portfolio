@@ -1,182 +1,295 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ravin D</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #fafafa;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    header {
-      background-color: #343a40;
-    }
-    .navbar-brand {
-      font-weight: bold;
-      color: #ffffff;
-    }
-    .navbar-nav .nav-link {
-      color: #ffffff;
-    }
-    .py-5 {
-      padding-top: 5rem;
-      padding-bottom: 5rem;
-    }
-    .fw-light {
-      font-weight: 300;
-    }
-    .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-    .btn-primary:hover {
-      background-color: #0069d9;
-      border-color: #0062cc;
-    }
-    .text-muted {
-      color: #6c757d;
-    }
-    .featurette-divider {
-      margin: 5rem 0;
-    }
-    .featurette-heading {
-      font-weight: 300;
-      font-size: 42px;
-    }
-    .lead {
-      font-size: 24px;
-    }
-    .rounded-circle {
-      border-radius: 50%;
-    }
-    .mb-1 {
-      margin-bottom: 0.5rem;
-    }
-    .float-end {
-      float: right;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    footer {
-      background-color: #f8f9fa;
-      padding: 2rem 0;
-    }
-  </style>
-</head>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">Ravin D</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link" href="https://www.linkedin.com/in/ravin-d-035922216">LinkedIn</a>
-            <a class="nav-link" href="{% url 'techstack' %}">My Projects</a>
-            <a class="nav-link" href="{% url 'bloghome' %}">My Blog</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+      <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+      <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+    </symbol>
+  </svg>
+
+<main>
+
+
+
+<div class="b-example-divider"></div>
+
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+  <h1 class="display-4 fw-bold text-body-emphasis">Hello! This is Ravin !</h1>
+  <h5 >CS Undergrad and Aspiring AI Engineer</h5><br>
   
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-      .container {
-          padding: 40px;
-          background-color: #f8f9fa;
-          border-radius: 10px;
-          margin-top: 40px;
-      }
-
-      h1 {
-          color: #333;
-          font-weight: bold;
-          margin-bottom: 30px;
-      }
-
-      hr {
-          background-color: #007bff;
-          height: 2px;
-          margin-top: 60px;
-          margin-bottom: 60px;
-          border: none;
-      }
-
-      .lead {
-          color: #888;
-          margin-bottom: 30px;
-      }
-
-      .btn-primary,
-      .btn-outline-secondary {
-          font-size: 18px;
-          padding: 10px 20px;
-          border-radius: 8px;
-      }
-  </style>
-  <title>Welcome to My Portfolio!</title>
-</head>
-
-<body>
-  <main>
-    <section class="py-5 text-center container">
-      <div class="px-4 py-5 my-5 text-center">
-          <h1 class="display-5 fw-bold">Welcome to My Portfolio!</h1>
-          <hr>
-          <br>
-          <div class="container-fluid">
-              <p class="lead mb-2">
-                  I am a passionate third-year computer science student at VIT Vellore, with a strong focus on Machine Learning, Computer Vision, and Django Web Development. As a dedicated research enthusiast, I am actively seeking hands-on experiences that allow me to translate my skills into real-world impacts. I am particularly excited about integrating Machine Learning, Computer Vision, and web development to create meaningful AI applications.
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">I am a passionate third-year computer science student at VIT Vellore, with a strong focus on Machine Learning, Computer Vision, and Django Web Development. As a dedicated research enthusiast, I am actively seeking hands-on experiences that allow me to translate my skills into real-world impacts. I am particularly excited about integrating Machine Learning, Computer Vision, and web development to create meaningful AI applications.
                   
-                  Feel free to explore my website for intriguing projects and content!
-                  <br>
-                  <br>
-                  🔭 Currently, my efforts are directed towards <strong>Space-based AI Applications and Placements</strong>. <br>
-                  
-                  🌱 I am in the process of learning about <strong>Data Science and Competitive Coding</strong>. <br>
-                  
-                  💬 You can approach me for insightful discussions on <strong>Data Science, ML, DL and AI</strong>. <br>
-                  
-                  🔥 A little something about me: <strong>I am enthusiastic about crafting solutions that address real-life problems.</strong><br>
+      Feel free to explore my website for intriguing projects and content!</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+      <p align="left">
+        <h4 align="left">Connect with me:</h4>
+        <a href="https://twitter.com/Ravin_D27" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Ravin_D27" height="30" width="40" /></a>
+        <a href="https://github.com/ravin-d-27" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="ravin-d-035922216" height="30" width="40" /></a>
+        <a href="https://kaggle.com/ravin2704" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/kaggle.svg" alt="ravin2704" height="30" width="40" /></a>
+        <a href="https://www.hackerrank.com/ravin_d3107" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg" alt="ravin_d3107" height="30" width="40" /></a>
+        </p>
+    </div>
+  </div>
+  <div class="overflow-hidden" style="max-height: 30vh;">
+    <div class="container px-5">
+      <img src="{% static "Profile.png" %}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+    </div>
+  </div>
+</div>
 
-              </p>
-              
-              <br>
-              <br>
-              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+<div class="b-example-divider"></div>
 
-                  <h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://twitter.com/Ravin_D27" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Ravin_D27" height="30" width="40" /></a>
-<a href="https://github.com/ravin-d-27" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="ravin-d-035922216" height="30" width="40" /></a>
-<a href="https://kaggle.com/ravin2704" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/kaggle.svg" alt="ravin2704" height="30" width="40" /></a>
-<a href="https://www.hackerrank.com/ravin_d3107" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/hackerrank.svg" alt="ravin_d3107" height="30" width="40" /></a>
-</p>
-              </div>
-          </div>
+
+<div class='container' align='center'>
+<div class="container px-4 py-5" id="featured-3">
+  <h1 class="display-4 fw-bold text-body-emphasis">Programming Languages</h1><br>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="https://skillicons.dev/icons?i=py" alt="My Skills" class='image-container'>
       </div>
-  </section>
+      <h3 class="fs-2 text-body-emphasis">Python</h3>
+      <p>Core Knowledge: ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=c" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">C</h3>
+      <p>Core Knowledge: ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=cpp" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">C++</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=java" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Java</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=html" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">HTML</h3>
+      <p>Core Knowledge: ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=css" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">CSS</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=js" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">JavaScript</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
 
-  </main>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=r" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">R</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=matlab" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">MATLAB</h3>
+      <p>Good Knowledge: ⭐⭐⭐</p>
+    </div>
+
+    
+  </div>
+</div>
+</div>
 
 
 
 
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>    
+
+<div class="b-example-divider"></div>
+
+
+<div class='container' align='center'>
+<div class="container px-4 py-5" id="featured-3">
+  <h1 class="display-4 fw-bold text-body-emphasis">Tools</h1><br>
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="https://skillicons.dev/icons?i=vscode" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Visual Studio Code</h3>
+      <p>Core Knowledge: ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=visualstudio" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Visual Studio 2022</h3>
+      <p>Good Knowledge: ⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=eclipse" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Eclipse</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=git" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Git</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=github" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">GitHub</h3>
+      <p>Core Knowledge: ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=mysql" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">MySQL</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=postgresql" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">PostgreSQL</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="{% static 'oracle.png' %}" class="image-container" height="50px" width="50px">
+
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Oracle</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="{% static 'sqlserver.png' %}" class="image-container" height="50px" width="50px">
+      </div>
+      <h3 class="fs-2 text-body-emphasis">SQL Server</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="{% static 'anaconda.png' %}" class="image-container" height="50px" width="50px">
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Anaconda Navigator</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=docker" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">Docker</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+        <img src="https://skillicons.dev/icons?i=aws" alt="My Skills" class='image-container'>
+      </div>
+      <h3 class="fs-2 text-body-emphasis">AWS</h3>
+      <p>Intermediate Knowledge: ⭐⭐⭐⭐</p>
+    </div>
+
+    
+  </div>
+</div>
+</div>
+
+
+
+<div class="b-example-divider"></div>
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Vertically centered hero sign-up form</h1>
+      <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+        <hr class="my-4">
+        <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+<div class="container my-5">
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Border hero with cropped image and shadows</h1>
+      <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+      </div>
+    </div>
+    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+        <img class="rounded-lg-3" src="bootstrap-docs.png" alt="" width="720">
+    </div>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+<div class="b-example-divider mb-0"></div>
+</main>
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  </body>
+{% endblock %}
