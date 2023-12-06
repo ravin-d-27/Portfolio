@@ -22,7 +22,7 @@ def count(request):
     return render(request,'skills/count.html',{'name':name,'mail':mail,'comment':comment})
 
 def techstack(request):
-    skills = Skill.objects
+    skills = Skill.objects.all().order_by('-id')
     return render(request, 'skills/tech_stack.html',{'skills':skills})
 
 def stack(request):
