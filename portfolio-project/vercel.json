@@ -10,7 +10,7 @@
       "src": "build_files.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "staticfiles_build"
+        "distDir": "."
       }
     }
   ],
@@ -23,5 +23,8 @@
       "src": "/(.*)",
       "dest": "portfolio/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "portfolio.settings"
+  }
 }
