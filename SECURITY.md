@@ -14,8 +14,15 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+We take the security of our project seriously and appreciate the efforts of the security community in helping us maintain a secure environment. If you believe you have discovered a security vulnerability, we encourage you to report it to us promptly in accordance with the following guidelines.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Reporting Process
+Contact Information: Please report security vulnerabilities by contacting us through our dedicated email address: ravin.d3107@outlook.com
+
+Provide Details: When reporting a vulnerability, please include the following details:
+
+A clear and concise description of the vulnerability.
+Steps to reproduce the vulnerability.
+Information about the environment in which the vulnerability was discovered (e.g., version numbers, configurations).
+Your contact information for further communication.
+Responsible Disclosure: We request that you do not publicly disclose the vulnerability details until we have had an opportunity to address the issue. We believe in responsible disclosure and will work to provide a fix before any public disclosure.
