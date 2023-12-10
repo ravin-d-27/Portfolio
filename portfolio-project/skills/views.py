@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Skill
+from .models import Skill, Endorse
 # Create your views here.
 def home(request):
     return render(request,'skills/home.html')
@@ -13,12 +13,10 @@ def count(request):
     mail = request.GET['email']
     comment = request.GET['comment']
 
-    lst = [name,mail,comment]
-    f=open('commentdetails.txt','a+')
-    for i in lst:
-        f.write(i)
-        f.write('\n')
-    f.close()
+    new_entry = Endorse(name=name, email_id=mail, endorsement=comment)
+
+    # Save the new instance to the database
+    new_entry.save()
     return render(request,'skills/count.html',{'name':name,'mail':mail,'comment':comment})
 
 def techstack(request):
