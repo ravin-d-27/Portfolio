@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     {% load static %}
     <meta charset="utf-8">
@@ -9,48 +7,98 @@
     <title>Ravin D</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
-        /* Style for the container div */
-        .image-container {
-            background-color: #FFFFFF; /* Set your desired background color */
-            display: inline-block; /* Keeps the container size to the content size */
-            padding: 10px; /* Add padding for better appearance */
-        }
-
-        /* Style to remove default margin/padding on the body */
+        /* Dark Mode Styles */
         body {
+            background-color: #121212;
+            color: #e0e0e0;
             margin: 0;
             padding: 0;
         }
+        .navbar-dark .navbar-brand, .navbar-dark .nav-link {
+            color: #e0e0e0;
+        }
+        .navbar-dark .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        .image-container {
+            background-color: #1e1e1e;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .text-body-emphasis {
+            color: #bb86fc; /* Light purple color */
+        }
+        .btn-outline-secondary {
+            color: #bb86fc;
+            border-color: #bb86fc;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #bb86fc;
+            color: #121212;
+        }
+        .border-bottom {
+            border-bottom: 1px solid #bb86fc !important;
+        }
+        .lead {
+            color: #e0e0e0;
+        }
+        /* Loading Spinner Styles */
+        .spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #bb86fc;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            z-index: 9999;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
-
 <body>
     <header>
-        <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}">Ravin D</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="https://www.linkedin.com/in/ravin-d-035922216">LinkedIn</a>
-                        <a class="nav-link" href="{% url 'techstack' %}">My Projects</a>
-                        <a class="nav-link" href="{% url 'bloghome' %}">My Blog</a>
+        <div class='container'>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid ">
+                    <a class="navbar-brand" href="{% url 'home' %}">Ravin D</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ms-auto px-3">
+                            <a class="nav-link" href="https://www.linkedin.com/in/ravin-d-035922216">LinkedIn</a>
+                            <a class="nav-link" href="{% url 'techstack' %}">My Projects</a>
+                            <a class="nav-link" href="{% url 'bloghome' %}">My Blog</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-    </div>
+            </nav>
+        </div>
     </header>
-
-        {% block content %}
-
-        {% endblock %}
-
+    <div class="spinner" id="spinner"></div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const spinner = document.getElementById("spinner");
+            const content = document.getElementById("content");
 
+            window.addEventListener("load", function() {
+                spinner.style.display = "none";
+                content.style.display = "block";
+            });
+        });
+    </script>
+    {% block content %}
+    {% endblock %}
+</body>
 </html>
