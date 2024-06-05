@@ -1,0 +1,32 @@
+{% extends 'exp.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+    <div align='center'>
+        <h1 class="display-4 fw-bold" style="color: #bb86fc;">My Experience</h1>
+        </div>
+
+    <div class="wrapper">
+        <div class="center-line">
+            <a href="#" class="scroll-icon"><i class="fas fa-caret-up"></i></a>
+        </div>
+        {% for item in exp %}
+            <div class="row {% if forloop.counter|divisibleby:2 %}row-2{% else %}row-1{% endif %}">
+                <section>
+                    <i class="icon fas fa-home"></i>
+                    <div class="details">
+                        <span class="title">{{ item.title }}</span>
+                        <span>{{ item.from_date }} - {{ item.to_date }}</span>
+                    </div>
+                    <br>
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="img-fluid rounded mb-3" height="200" width="300">
+                    {% endif %}
+                    <p>{{ item.about }}</p>
+                </section>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}

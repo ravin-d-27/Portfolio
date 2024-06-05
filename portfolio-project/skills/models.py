@@ -25,3 +25,13 @@ class Achievements(models.Model):
     
     def __str__(self):
         return self.title
+    
+class Experience(models.Model):
+    image = models.ImageField(null=True, upload_to = 'images/')
+    title = models.CharField(max_length=200)
+    from_date = models.CharField(max_length=50)
+    to_date = models.CharField(max_length=50)
+    about = models.CharField(max_length=2000)
+    
+    def __str__(self) -> str:
+        return self.title
