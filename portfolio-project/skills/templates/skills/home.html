@@ -2,28 +2,30 @@
 {% load static %}
 {% block content %}
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-    <!-- SVG symbols here -->
-  </svg>
 
   <main>
+
+    <div class="b-example-divider"></div>
     <div class="b-example-divider content-wrapper animate__animated animate__fadeIn"></div>
 
-    <div class="px-4 pt-5 my-5 text-center border-bottom">
-      <div style="max-height: 30vh;">
-        <div class="container px-5">
-          <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{% static 'Profile_Pic.png' %}">
+
+
+    <div class="b-example-divider"></div>
+
+    <div class="container col-xxl-10 px-6 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-10 py-5">
+        <div class="col-10 col-sm-10 col-lg-6">
+          <img src="{% static 'Profile_Pic.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="600" height="400" loading="lazy">
         </div>
-      </div>
-      <br>
-      <h1 class="display-4 fw-bold" style="color: #bb86fc;">Hello! This is Ravin!</h1>
-      <h5>CS Undergrad and Aspiring AI Engineer</h5><br>
-  
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Ravin D is an undergraduate student at VIT University, currently pursuing a Bachelor's Degree in Computer Science and Engineering. As a third-year student, he specializes in Machine Learning, Computer Vision, Natural Language Processing and Django Web Development. With a strong passion for research and open-source development, he is dedicated to exploring cutting-edge technologies and methodologies to address real-world challenges. He has presented his AI research in the field of exoplanets at prestigious international conferences, earning recognition from esteemed scientists at ISRO, NASA, and DLR. He has also showcased his work on AI for detecting mitochondrial diseases at the NCBS Campus, receiving acclaim from leading healthcare leaders and doctors. Additionally, he is a collaborator in the NASA Exoplanet Watch Citizen Science Project, where he has made meaningful contributions. His enthusiasm for technology extends beyond the classroom, as he actively seeks opportunities to contribute to ongoing research and open-source projects. By leveraging his expertise, he aspires to make significant contributions to the field of AI and its applications. He is committed to using his research-oriented mindset to drive innovation and address pressing issues within the tech community.</p>
-        <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{% url 'stack' %}">Tech Stack</a>
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold" style="color: #bb86fc;">Hello! This is Ravin!</h1>
+          <h5>CS Undergrad and Aspiring AI Engineer</h5><br>
+          <p class="lead">Ravin D is an undergraduate student at VIT University, currently pursuing a Bachelor's Degree in Computer Science and Engineering. As a third-year student, he specializes in Machine Learning, Computer Vision, Natural Language Processing and Django Web Development. With a strong passion for research and open-source development, he is dedicated to exploring cutting-edge technologies and methodologies to address real-world challenges. He has presented his AI research in the field of exoplanets at prestigious international conferences, earning recognition from esteemed scientists at ISRO, NASA, and DLR. He has also showcased his work on AI for detecting mitochondrial diseases at the NCBS Campus, receiving acclaim from leading healthcare leaders and doctors. Additionally, he is a collaborator in the NASA Exoplanet Watch Citizen Science Project, where he has made meaningful contributions. His enthusiasm for technology extends beyond the classroom, as he actively seeks opportunities to contribute to ongoing research and open-source projects. By leveraging his expertise, he aspires to make significant contributions to the field of AI and its applications. He is committed to using his research-oriented mindset to drive innovation and address pressing issues within the tech community.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{% url 'stack' %}">Tech Stack</a>
         <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{% url 'achievements' %}">Achievements</a><br><br>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+          </div>
+
           <p align="left">
             <h4 align="left">Connect with me:</h4>
             
@@ -34,6 +36,18 @@
         </div>
       </div>
     </div>
+
   </main>
 </body>
+
+
+  <footer class="text-muted py-5">
+    <div class="container text-center">
+      <p class="float-end mb-1">
+  
+      </p>
+      <p class="lead">&copy; Ravin D {% now "Y" %}</p>
+
+    </div>
+  </footer>
 {% endblock %}

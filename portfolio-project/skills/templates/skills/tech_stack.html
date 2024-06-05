@@ -3,7 +3,9 @@
 {% block content %}
     <main>
       <br>
-            <h1 class="text-center"><b>My Projects</b></h1>
+      <div align='center'>
+      <h1 class="display-4 fw-bold" style="color: #bb86fc;">My Projects</h1>
+      </div>
             <div class='container'>
             {% for skill in skills.all %}
 
@@ -13,10 +15,10 @@
                   <img src="{{ skill.image.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
                 </div>
                 <div class="col-lg-6">
-                  <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ skill.summary }}</h1>
+                  <h1 class="display-6 fw-bold" style="color: #bb86fc;">{{ skill.summary }}</h1>
                   <p class="lead">{{ skill.tech }}</p>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a type="button" class="btn btn-primary btn-lg px-4 me-md-2" href="{{ skill.url }}">View and Star Repo</a>
+                    <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{{ skill.url }}">Project Link</a>
                     <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{% url 'likecount' %}">Endorse !</a>
                   </div>
                 </div>
