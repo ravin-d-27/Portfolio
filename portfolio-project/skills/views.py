@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Skill, Endorse
+from .models import Skill, Endorse, Achievements
 # Create your views here.
 def home(request):
     return render(request,'skills/home.html')
@@ -27,4 +27,5 @@ def stack(request):
     return render(request, 'skills/stack.html')
 
 def achievements(request):
-    return render(request, 'skills/achievements.html')
+    xyz = Achievements.objects.all().order_by('-id')
+    return render(request, 'skills/achievements.html', {'xyz':xyz})
