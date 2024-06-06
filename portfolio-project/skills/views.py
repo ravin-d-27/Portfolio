@@ -31,5 +31,5 @@ def achievements(request):
     return render(request, 'skills/achievements.html', {'xyz':xyz})
 
 def experience(request):
-    exp = Experience.objects.all().order_by('-id')
+    exp = Experience.objects.all().order_by('id')
     return render(request, 'skills/experience.html', {'exp':exp})
