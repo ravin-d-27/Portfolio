@@ -32,6 +32,10 @@ class Experience(models.Model):
     from_date = models.CharField(max_length=50)
     to_date = models.CharField(max_length=50)
     about = models.CharField(max_length=2000)
+    order = models.PositiveIntegerField(default=0)
+    
+    class Meta:
+        ordering = ['order']
     
     def __str__(self) -> str:
         return self.title
