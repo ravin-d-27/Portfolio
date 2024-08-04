@@ -1,34 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <main>
-      <br>
-      <div align='center'>
-      <h1 class="display-4 fw-bold" style="color: #bb86fc;">My Projects</h1>
-      </div>
-            <div class='container'>
+<main>
+    <br>
+    <div align='center'>
+        <h1 class="display-4 fw-bold" style="color: #bb86fc;">My Projects</h1>
+    </div>
+    <br>
+    <div class='container'>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             {% for skill in skills.all %}
-
-            <div class="container col-xxl-8 px-4 py-5">
-              <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div class="col-10 col-sm-8 col-lg-6">
-                  <img src="{{ skill.image.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <div class="col">
+                <div class="card h-100 text-white bg-dark">
+                    <img src="{{ skill.image.url }}" class="card-img-top" alt="{{ skill.summary }}" loading="lazy" height='300' width='400'>
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #bb86fc;">{{ skill.summary }}</h5>
+                        <p class="card-text">{{ skill.tech }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ skill.url }}" class="btn btn-outline-light btn-sm">Project Link</a>
+                        <a href="{% url 'likecount' %}" class="btn btn-outline-light btn-sm">Endorse!</a>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                  <h1 class="display-6 fw-bold" style="color: #bb86fc;">{{ skill.summary }}</h1>
-                  <p class="lead">{{ skill.tech }}</p>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{{ skill.url }}">Project Link</a>
-                    <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{% url 'likecount' %}">Endorse !</a>
-                  </div>
-                </div>
-              </div>
             </div>
-            
             {% endfor %}
-          </div>
-        
-    </main>
+        </div>
+    </div>
+</main>
 </body>
-
 {% endblock content %}
