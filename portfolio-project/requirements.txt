@@ -20,5 +20,5 @@ python-decouple
 boto3
 django-storages
 whitenoise
-tensorflow==2.14.0
+tensorflow
 nltk==3.8.1
