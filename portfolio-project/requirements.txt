@@ -21,5 +21,4 @@ boto3
 django-storages
 whitenoise
 tensorflow==2.14.0
-scikit-learn
 nltk==3.8.1
