@@ -20,5 +20,8 @@ urlpatterns = [
     path('stack/',skills.views.stack,name='stack'),
     path('achievements/',skills.views.achievements,name='achievements'),
     path('experience/',skills.views.experience,name='experience'),
+    path('predict/', skills.views.pred, name='pred'),
+    path('finder/', skills.views.find, name='finder'),
+    path('review_spot/', skills.views.review_spot, name='review_spot'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
