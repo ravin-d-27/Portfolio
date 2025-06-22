@@ -1,109 +1,479 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ravin D</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Ravin D - AI Engineer & Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Dark Mode Styles */
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        .navbar-dark .navbar-brand, .navbar-dark .nav-link {
-            color: #e0e0e0;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
         }
-        .navbar-dark .navbar-toggler-icon {
-            filter: invert(1);
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+            z-index: -1;
+            animation: gradientShift 10s ease-in-out infinite alternate;
         }
-        .image-container {
-            background-color: #1e1e1e;
-            display: inline-block;
-            padding: 10px;
-            border-radius: 10px;
+
+        @keyframes gradientShift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
         }
-        .text-body-emphasis {
-            color: #bb86fc; /* Light purple color */
+
+        /* Glass Morphism Effect */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px var(--shadow-color);
         }
-        .btn-outline-secondary {
-            color: #bb86fc;
-            border-color: #bb86fc;
+
+        /* Modern Navigation */
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
         }
-        .btn-outline-secondary:hover {
-            background-color: #bb86fc;
-            color: #121212;
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .border-bottom {
-            border-bottom: 1px solid #bb86fc !important;
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        .lead {
-            color: #e0e0e0;
+
+        .nav-link:hover {
+            background: var(--glass-bg);
+            color: #fff !important;
+            transform: translateY(-2px);
         }
-        /* Loading Spinner Styles */
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .profile-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: var(--primary-gradient);
+            padding: 4px;
+            animation: float 6s ease-in-out infinite;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Modern Buttons */
+        .btn-modern {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            margin: 0.5rem;
+        }
+
+        .btn-primary-modern {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary-modern:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+            color: white;
+        }
+
+        .btn-secondary-modern {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary-modern:hover {
+            background: var(--glass-bg);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            animation: slideInLeft 1s ease-out 0.6s both;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Cards */
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow-color);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        /* Loading Spinner */
         .spinner {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #bb86fc;
-            border-radius: 50%;
             width: 60px;
             height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid #667eea;
             animation: spin 1s linear infinite;
             z-index: 9999;
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .btn-modern {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tech Stack Icons */
+        .tech-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.2) rotate(5deg);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class='container'>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid ">
-                    <a class="navbar-brand" href="{% url 'home' %}">Ravin D</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ms-auto px-3">
-                            <a class="nav-link" href="https://www.linkedin.com/in/ravin-d-035922216">LinkedIn</a>
-                            <a class="nav-link" href="{% url 'experience' %}">Experience</a>
-                            <a class="nav-link" href="{% url 'techstack' %}">My Projects</a>
-                            <a class="nav-link" href="{% url 'achievements' %}">Achievements</a>
-                            <a class="nav-link" href="https://ravin-d-27.github.io/resume/">My Resume</a>
-
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <!-- Loading Spinner -->
     <div class="spinner" id="spinner"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-code"></i> Ravin D
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="#home">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a class="nav-link" href="https://www.linkedin.com/in/ravin-d-035922216" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a class="nav-link" href="#experience">
+                        <i class="fas fa-briefcase"></i> Experience
+                    </a>
+                    <a class="nav-link" href="#projects">
+                        <i class="fas fa-rocket"></i> Projects
+                    </a>
+                    <a class="nav-link" href="#achievements">
+                        <i class="fas fa-trophy"></i> Achievements
+                    </a>
+                    <a class="nav-link" href="https://ravin-d-27.github.io/resume/" target="_blank">
+                        <i class="fas fa-file-alt"></i> Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+
+
+    {% endblock %}
+
+    
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0" style="color: var(--text-secondary);">
+                        &copy; 2024 Ravin D. Built with passion and modern web technologies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Loading Spinner
         document.addEventListener("DOMContentLoaded", function() {
             const spinner = document.getElementById("spinner");
-            const content = document.getElementById("content");
-
+            
             window.addEventListener("load", function() {
-                spinner.style.display = "none";
-                content.style.display = "block";
+                setTimeout(() => {
+                    spinner.style.opacity = "0";
+                    setTimeout(() => {
+                        spinner.style.display = "none";
+                    }, 300);
+                }, 800);
             });
         });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+            } else {
+                navbar.style.background = 'var(--glass-bg)';
+            }
+        });
+
+        // Add rotation animation to profile border
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
-    {% block content %}
-    {% endblock %}
 </body>
 </html>

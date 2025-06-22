@@ -2,45 +2,322 @@
 {% block content %}
 {% load static %}
 
-<div align='center'>
-  <h1 class="display-4 fw-bold" style="color: #bb86fc;">My Achievements</h1>
-  </div>
 
-{% for skill in xyz.all %}
-<div class="container col-xxl-10 px-4 py-5">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img src="{{ skill.image.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-    </div>
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold" style="color: #bb86fc;">{{ skill.title }}</h1>
-      <p class="lead">{{ skill.content }}</p>
-    </div>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-      <a type="button" class="btn btn-outline-secondary btn-lg px-4" href="{{ skill.url }}">Link</a>
-    </div>
-  </div>
-</div>
-{% endfor %}
+<!-- Additional Achievements Section -->
+ <br>
+ <br>
+ <br>
+ <br>
+<section class="py-5 fade-in">
+    <div class="container">
+        <h2 class="text-center mb-5" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            <i class="fas fa-medal"></i> My Notable Achievements
+        </h2>
+        
+        <!-- VIT Special Achiever Award -->
+        <div class="row align-items-center g-5 mb-5">
+            <div class="col-lg-6">
+                <div class="feature-card h-auto">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="h4 mb-3" style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Special Achiever Award from VIT
+                    </h3>
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-calendar-alt"></i> June 2024 | 
+                            <i class="fas fa-university"></i> Vellore Institute of Technology
+                        </small>
+                    </div>
+                    <p class="mb-4" style="color: var(--text-secondary); line-height: 1.8;">
+                        Received Letter of Appreciation from VIT University recognizing me as a <strong>"Special Achiever"</strong> 
+                        during 2023-24 for exemplary performance at various International events representing the institute.
+                    </p>
+                    
+                    <!-- Achievement Details -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center gap-3 p-3 rounded-3" 
+                             style="background: var(--glass-bg); border: 1px solid var(--border-color);">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-trophy text-warning"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted">Recognition</small>
+                                <div style="color: var(--text-primary);">Exemplary performance at International events</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge px-3 py-2" 
+                              style="background: var(--accent-gradient); color: white; font-size: 0.85rem;">
+                            <i class="fas fa-award"></i> University Recognition
+                        </span>
+                        <span class="badge px-3 py-2" 
+                              style="background: var(--secondary-gradient); color: white; font-size: 0.85rem;">
+                            <i class="fas fa-globe-americas"></i> International Events
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <div class="glass rounded-4 p-5 text-center">
+                        <i class="fas fa-certificate" style="font-size: 4rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        <h4 class="mt-3" style="color: var(--text-primary);">Special Achiever</h4>
+                        <p style="color: var(--text-secondary);">VIT University 2023-24</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="container col-xxl-10 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="{% static 'conference.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold" style="color: #bb86fc;">Presenter at SMOPS 2023 International Conference</h1>
-        <p class="lead">I have really exciting news to share with you all! My research paper on Predicting Exoplanets using Artificial Intelligence got selected for a presentation at the Spacecraft Mission Operations (SMOPS 2023) International conference. It's a huge honor!
-          Attending the conference has been an amazing experience. I've had the opportunity to meet scientists from ISRO, NASA, and other space agencies. We've been exchanging ideas about Spacecraft Mission Operations, and it's been so cool!
-          I want to give a big shoutout to my research partner, Nidhi Shakhapur. She's been providing great partnership throughout this research journey, and I'm grateful for her support.
-          I also want to thank our mentor, Dr. Leema Rose, and our SEDS VIT chairperson, Chetan Shiraguppi. They've been there for us, guiding and supporting us along the way.
-          And a special thanks to my parents for always being there for me. I couldn't have done this without their moral support.
-          I'm really looking forward to getting our research paper published and sharing our findings with other scientists. It's going to be great!
-          Good times!</p>
+        <!-- VIT Achiever Award -->
+        <div class="row align-items-center g-5 mb-5 flex-lg-row-reverse">
+            <div class="col-lg-6">
+                <div class="feature-card h-auto">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="h4 mb-3" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Achiever Award from VIT
+                    </h3>
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-calendar-alt"></i> June 2024 | 
+                            <i class="fas fa-university"></i> Vellore Institute of Technology
+                        </small>
+                    </div>
+                    <p class="mb-4" style="color: var(--text-secondary); line-height: 1.8;">
+                        Recognized as an <strong>"Achiever"</strong> during 2023-24 for exemplary performance 
+                        at various National events representing the institute.
+                    </p>
+                    
+                    <!-- Achievement Details -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center gap-3 p-3 rounded-3" 
+                             style="background: var(--glass-bg); border: 1px solid var(--border-color);">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-flag text-success"></i>
+                            </div>
+                            <div>
+                                <small class="text-muted">Recognition</small>
+                                <div style="color: var(--text-primary);">Exemplary performance at National events</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge px-3 py-2" 
+                              style="background: var(--primary-gradient); color: white; font-size: 0.85rem;">
+                            <i class="fas fa-medal"></i> University Honor
+                        </span>
+                        <span class="badge px-3 py-2" 
+                              style="background: var(--accent-gradient); color: white; font-size: 0.85rem;">
+                            <i class="fas fa-flag"></i> National Events
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <div class="glass rounded-4 p-5 text-center">
+                        <i class="fas fa-medal" style="font-size: 4rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        <h4 class="mt-3" style="color: var(--text-primary);">Achiever</h4>
+                        <p style="color: var(--text-secondary);">VIT University 2023-24</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      </div>
+        <!-- REDRESS 2023 Research Presentation -->
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="feature-card h-auto">
+                    <div class="feature-icon">
+                        <i class="fas fa-earth"></i>
+                    </div>
+                    <h3 class="h4 mb-3" style="background: var(--secondary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Presenter at SMOPS 2023 International Conference
+                    </h3>
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-calendar-alt"></i> June 2023 | 
+                            <i class="fas fa-building"></i> Taj Yeshwanthpur
+                        </small>
+                    </div>
+                    <p class="mb-4" style="color: var(--text-secondary); line-height: 1.8;">
+                        My research paper on "Predicting Exoplanets using Artificial Intelligence" was selected for presentation at the Spacecraft Mission Operations (SMOPS 2023) International conference - a tremendous honor in the space research community.
+                    </p>
+                    
+                    <!-- Key Highlights -->
+                    <div class="mb-4">
+                        <h6 class="mb-3" style="color: var(--text-primary);">
+                            <i class="fas fa-star"></i> Conference Highlights
+                        </h6>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="d-flex align-items-center gap-3 p-3 rounded-3" 
+                                     style="background: var(--glass-bg); border: 1px solid var(--border-color);">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-building text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">Collaboration</small>
+                                        <div style="color: var(--text-primary);">Met scientists from ISRO, NASA, and international space agencies</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center gap-3 p-3 rounded-3" 
+                                     style="background: var(--glass-bg); border: 1px solid var(--border-color);">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-user-friends text-success"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">Research Partner</small>
+                                        <div style="color: var(--text-primary);">Collaborated with Nidhi Shakhapur</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center gap-3 p-3 rounded-3" 
+                                     style="background: var(--glass-bg); border: 1px solid var(--border-color);">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-comments text-info"></i>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">Impact</small>
+                                        <div style="color: var(--text-primary);">Engaged in insightful research discussions</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Research Impact -->
+                    <div class="mb-4">
+                        <h6 class="mb-2" style="color: var(--text-primary);">
+                            <i class="fas fa-lightbulb"></i> Research Impact
+                        </h6>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            This research contributes to the advancement of exoplanet discovery using AI/ML techniques, potentially accelerating our understanding of planetary systems beyond our solar system.
+                        </p>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge px-3 py-2" 
+                              style="background: var(--secondary-gradient); color: white; font-size: 0.85rem;">
+                            <i class="fas fa-dna"></i> Space Research
+                        </span>
+                        <span class="badge px-3 py-2" 
+                              style="background: var(--primary-gradient); color: white; font-size: 0.85rem;">
+                            <i class="fas fa-brain"></i> Artificial Intelligence
+                        </span>
+                        <span class="badge px-3 py-2" 
+                              style="background: var(--accent-gradient); color: white; font-size: 0.85rem;">
+                            <i class="fas fa-stethoscope"></i> International Conference
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <div class="glass rounded-4 p-5 text-center">
+                        <i class="fas fa-rocket" style="font-size: 4rem; background: var(--secondary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                        <h4 class="mt-3" style="color: var(--text-primary);">SMOPS 2023</h4>
+                        <p style="color: var(--text-secondary);">Spacecraft Mission Operations International Conference</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
+<!-- Achievement Stats -->
+<section class="py-5 fade-in">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="glass rounded-4 p-5">
+                    <h3 class="text-center mb-5" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        <i class="fas fa-chart-line"></i> Achievement Highlights
+                    </h3>
+                    <div class="row text-center g-4">
+                        <div class="col-md-3 col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon mx-auto">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <h4 class="mb-2" style="color: var(--text-primary);">5+</h4>
+                                <p class="mb-0" style="color: var(--text-secondary);">Major Achievements</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon mx-auto">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="mb-2" style="color: var(--text-primary);">2</h4>
+                                <p class="mb-0" style="color: var(--text-secondary);">Conferences</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon mx-auto">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4 class="mb-2" style="color: var(--text-primary);">2</h4>
+                                <p class="mb-0" style="color: var(--text-secondary);">Research Papers</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon mx-auto">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <h4 class="mb-2" style="color: var(--text-primary);">2</h4>
+                                <p class="mb-0" style="color: var(--text-secondary);">University Awards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 fade-in">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="glass rounded-4 p-5">
+                    <h3 class="mb-3" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Let's Connect and Collaborate
+                    </h3>
+                    <p class="lead mb-4" style="color: var(--text-secondary);">
+                        Interested in discussing research opportunities, collaborations, or just want to connect? 
+                        I'm always open to meaningful conversations about AI, space technology, genetics research, and innovation.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="https://www.linkedin.com/in/ravin-d-035922216" 
+                           class="btn-modern btn-primary-modern" 
+                           target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            Connect on LinkedIn
+                        </a>
+                        <a href="https://ravin-d-27.github.io/resume/" 
+                           class="btn-modern btn-secondary-modern" 
+                           target="_blank">
+                            <i class="fas fa-file-alt"></i>
+                            View Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
