@@ -1,1407 +1,425 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ravin D - Full Stack Dev</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ravin D - Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2563eb;
-            --primary-light: #3b82f6;
-            --secondary-color: #64748b;
-            --accent-color: #f59e0b;
-            --text-primary: #0f172a;
-            --text-secondary: #64748b;
-            --text-muted: #94a3b8;
-            --background: #ffffff;
-            --background-secondary: #f8fafc;
-            --background-tertiary: #f1f5f9;
-            --border: #e2e8f0;
-            --border-light: #f1f5f9;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --radius: 8px;
-            --radius-lg: 12px;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 16px;
-            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #E2E2E2;
+            overflow-x: hidden;
         }
-
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 600;
-            line-height: 1.3;
-            margin-bottom: 0.5rem;
+        .gradient-text {
+            background: linear-gradient(90deg, #FFFFFF, #AFAFAF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .text-xl { font-size: 1.25rem; }
-        .text-2xl { font-size: 1.5rem; }
-        .text-3xl { font-size: 1.875rem; }
-        .text-4xl { font-size: 2.25rem; }
-        .text-5xl { font-size: 3rem; }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
+        .feature-card {
+            background: #0A0A0A;
+            border: 1px solid #2A2A2A;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #4A4A4A;
+        }
+        .grid-background {
+            position: absolute;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
-            z-index: 1000;
-            padding: 0.75rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-            transition: color 0.2s ease;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: var(--background-secondary);
-        }
-
-        /* Main Container */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0 6rem;
-            text-align: left;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--background-secondary);
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border);
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .hero-description {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: var(--radius);
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            font-size: 0.875rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-secondary {
-            background: var(--background);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--background-secondary);
-            border-color: var(--primary-color);
-        }
-
-        /* Sections */
-
-        section[id] {
-        padding-top: 80px;
-        margin-top: -80px;
-    }
-        .section {
-            margin-bottom: 6rem;
-        }
-
-        .section-header {
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-description {
-            color: var(--text-secondary);
-            font-size: 1.125rem;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            transition: all 0.2s ease;
-        }
-
-        .card:hover {
-            border-color: var(--primary-color);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .card-grid-2 {
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        }
-
-        .card-grid-3 {
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        }
-
-        /* About Section */
-        .about-card {
-            background: var(--background-secondary);
-            border: none;
-            padding: 3rem;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-
-        /* Experience Cards */
-        .experience-card .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .experience-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .experience-company {
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-top: 0.25rem;
-        }
-
-        .experience-date {
-            background: var(--background-tertiary);
-            color: var(--text-secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .experience-achievements {
-            list-style: none;
-        }
-
-        .experience-achievements li {
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .experience-achievements li::before {
-            content: '•';
-            position: absolute;
             left: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 1.2rem;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, #1A1A1A 1px, transparent 1px),
+                linear-gradient(to bottom, #1A1A1A 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
         }
-
-        /* Project Cards */
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            background: var(--primary-color);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .tech-tag {
-            background: var(--background-tertiary);
-            color: var(--text-secondary);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-link:hover {
-            color: var(--primary-light);
-        }
-
-        /* Publications */
-        .publication-card {
-            border-left: 4px solid var(--primary-color);
-            background: var(--background-secondary);
-        }
-
-        .publication-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .publication-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .publication-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-category h3 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            font-size: 1.125rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: var(--background-tertiary);
-            color: var(--text-primary);
-            padding: 0.5rem 0.75rem;
-            border-radius: var(--radius);
-            font-size: 0.875rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
-            transition: all 0.2s ease;
-        }
-
-        .skill-tag:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        /* Achievements */
-        .achievements-list {
-            list-style: none;
-        }
-
-        .achievement-item {
-            background: var(--background-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .achievement-item:hover {
-            border-color: var(--accent-color);
-            transform: translateX(2px);
-        }
-
-        .achievement-item::before {
-            content: '🏆';
+        .radial-gradient-background {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 1.25rem;
-            opacity: 0.4;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(100, 100, 255, 0.15), transparent 40%);
+            z-index: -1;
         }
-
-        .achievement-text {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            padding-right: 2.5rem;
-        }
-
-        .achievement-text strong {
-            color: var(--text-primary);
+        .btn-primary {
+            background: white;
+            color: black;
+            border-radius: 9999px;
+            padding: 12px 24px;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
-
-        /* Contact */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+        .btn-primary:hover {
+            background: #E2E2E2;
         }
-
-        .contact-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid #2A2A2A;
+            border-radius: 9999px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 1rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            transition: all 0.2s ease;
-            background: var(--background);
-        }
-
-        .contact-link:hover {
-            border-color: var(--primary-color);
-            background: var(--background-secondary);
-            color: var(--primary-color);
-            transform: translateY(-1px);
-        }
-
-        .contact-icon {
-            font-size: 1.25rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--background-secondary);
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-            margin-top: 6rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .main-container {
-                padding: 4rem 1rem 1rem;
-            }
-
-            .hero {
-                padding: 2rem 0 4rem;
-                text-align: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .section {
-                margin-bottom: 4rem;
-            }
-
-            .card-grid-2,
-            .card-grid-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-card .card-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .contact-links {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--background-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
-
-
-                /* Hero Section Updates */
-        .hero {
-            padding: 4rem 0 6rem;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero-image {
-            flex: 0 0 300px;
-            text-align: center;
-        }
-
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-color);
-            box-shadow: var(--shadow-lg);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-image img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 2rem 0 4rem;
-                text-align: center;
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .hero-image {
-                flex: none;
-                order: -1;
-            }
-
-            .hero-image img {
-                width: 200px;
-                height: 200px;
-            }
+        .btn-secondary:hover {
+            background: #1A1A1A;
+            border-color: #4A4A4A;
         }
     </style>
 </head>
+<body class="antialiased">
+    <div class="relative">
+        <div class="grid-background"></div>
+        <div class="radial-gradient-background"></div>
 
+        <header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16">
+                    <div class="text-2xl font-bold gradient-text">Ravin D</div>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="#home" class="hover:text-white transition-colors">Home</a>
+                        <a href="#about" class="hover:text-white transition-colors">About</a>
+                        <a href="#education" class="hover:text-white transition-colors">Education</a>
+                        <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                        <a href="#publications" class="hover:text-white transition-colors">Publications</a>
+                        <a href="#volunteering" class="hover:text-white transition-colors">Volunteering</a>
+                        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
 
-
-
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Ravin D</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#volunteering">Volunteering</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <br><br>
-    
-    <div class="main-container">
-        <!-- Hero Section -->
-        <section id="home" class="hero fade-in">
-            <div class="hero-content">
-                
-                <h1 class="hero-title">Ravin D</h1>
-                <h2 class="hero-subtitle">Full Stack Developer • ML Engineer • Author • Researcher</h2>
-                <p class="hero-description">
-                    Computer Science Graduate at VIT Vellore, specializing in building scalable solutions with Python, Java, and C#. Passionate about clean code, system optimization, and mission-critical applications.
+        <main class="container mx-auto px-4 pt-32">
+            <section id="hero" class="text-center py-20">
+                <img class="w-32 h-32 rounded-full mx-auto mb-6" src="https://ravin-d-universe.vercel.app/static/Profile_Pic.png" alt="Ravin D">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight gradient-text mb-6">
+                    Full Stack Developer • ML Engineer • Author • Researcher
+                </h1>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-10">
+                    Computer Science Graduate from VIT Vellore, specializing in building scalable solutions with Python, Java, and C#. Passionate about clean code, system optimization, and mission-critical applications.
                 </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <span></span>
-                        View My Work
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span></span>
-                        Get In Touch
-                    </a>
+                <div class="flex justify-center gap-4">
+                    <a href="#projects" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="{% static "Profile_Pic.png" %}" alt="Ravin - Back-End Developer & Data Engineer" />
-            </div>
-        </section>
+            </section>
 
-        <!-- About Section -->
-        <section id="about" class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-description">Building the future, one line of code at a time</p>
-            </div>
-            <div class="card about-card">
-                <p style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    Ravin D is a bachelor's degree Holder in Computer Science and Engineering. He specializes in Machine Learning, Computer Vision, Natural Language Processing and Django Web Development. With a strong passion for research and open-source development, he is dedicated to exploring cutting-edge technologies and methodologies to address real-world challenges. He has presented his AI research in the field of exoplanets at prestigious international conferences, earning recognition from esteemed scientists at ISRO, NASA, and DLR. 
-                </p>
-                <p style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7; margin-bottom: 1.5rem;">
-                    He has also showcased his work on AI for detecting mitochondrial diseases at the NCBS Campus, receiving acclaim from leading healthcare leaders and doctors. Additionally, he is a collaborator in the NASA Exoplanet Watch Citizen Science Project, where he has made meaningful contributions. His enthusiasm for technology extends beyond the classroom, as he actively seeks opportunities to contribute to ongoing research and open-source projects. By leveraging his expertise, he aspires to make significant contributions to the field of AI and its applications. He is committed to using his research-oriented mindset to drive innovation and address pressing issues within the tech community.
-                </p>
-                <div class="about-stats">
-                    <div class="stat">
-                        <span class="stat-number">9.13</span>
-                        <span class="stat-label">CGPA</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Publications</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">AWS</span>
-                        <span class="stat-label">Certified</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-<!-- Experience Section -->
-        <section id="education" class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">Education</h2>
-                <p class="section-description">My Educational Qualifications</p>
-            </div>
-            <div class="card-grid">
-                <div class="card experience-card">
-                    <div class="card-header">
+            <section id="about" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
+                <div class="max-w-4xl mx-auto text-center text-gray-400 text-lg">
+                    <p class="mb-6">Building the future, one line of code at a time.</p>
+                    <p class="mb-4">
+                        Ravin D is a bachelor's degree Holder in Computer Science and Engineering. He specializes in Machine Learning, Computer Vision, Natural Language Processing and Django Web Development. With a strong passion for research and open-source development, he is dedicated to exploring cutting-edge technologies and methodologies to address real-world challenges. He has presented his AI research in the field of exoplanets at prestigious international conferences, earning recognition from esteemed scientists at ISRO, NASA, and DLR.
+                    </p>
+                    <p class="mb-4">
+                        He has also showcased his work on AI for detecting mitochondrial diseases at the NCBS Campus, receiving acclaim from leading healthcare leaders and doctors. Additionally, he is a collaborator in the NASA Exoplanet Watch Citizen Science Project, where he has made meaningful contributions. His enthusiasm for technology extends beyond the classroom, as he actively seeks opportunities to contribute to ongoing research and open-source projects. By leveraging his expertise, he aspires to make significant contributions to the field of AI and its applications. He is committed to using his research-oriented mindset to drive innovation and address pressing issues within the tech community.
+                    </p>
+                    <div class="flex justify-center gap-8 mt-8">
                         <div>
-                             <img src="https://d2lk14jtvqry1q.cloudfront.net/media/small_Vellore_Institute_of_Technology_Business_School_VIT_BS_54186d8069_b24c14eeb1_61d78b032a_5c26f74c17.png" height=100 width=200>
-                            <h3 class="experience-title">B. Tech Computer Science and Engineering</h3>
-                            <p class="experience-company">Vellore Institute of Technology, Vellore</p>
+                            <p class="text-3xl font-bold gradient-text">9.13</p>
+                            <p>CGPA</p>
                         </div>
-                        <span class="experience-date">2021 - 2025</span>
-                    </div>
-                    <ul class="experience-achievements">
-                        <li>CGPA: 9.13</li>
-                        <li>Received Special Achiever and Achiever Award from VIT for representing the institution at International Events</li>
-                        <li>Consistently ranked in the top percentile with a 9.13 CGPA at VIT Vellore</li>
-                        <li>Facilitated technical workshops in Machine Learning, translating complex ideas into accessible learning experiences.</li>
-                    </ul>
-                </div>
-
-                <div class="card experience-card">
-                    <div class="card-header">
                         <div>
-                            <img src="https://th.bing.com/th/id/OIP.3Aa5gxT3KLTxShcU0j6VHQHaHa?r=0&rs=1&pid=ImgDetMain&cb=idpwebpc2" height=100 width=100>
-                            <br>
-                            <h3 class="experience-title">High School PCM and Computer Science</h3>
-                            <p class="experience-company">Sree Narayana Mission Senior Secondary School, Chennai</p>
+                            <p class="text-3xl font-bold gradient-text">3+</p>
+                            <p>Publications</p>
                         </div>
-                        <span class="experience-date">2006 - 2021</span>
-                    </div>
-                    <ul class="experience-achievements">
-                        <li>Class 12: 91.8%</li>
-                        <li>Class 10: 83.8%</li>
-                        <li>Gold Medal in Inter House Football Comptetition</li>
-                        <li>1st Place in Cooking without flame Comptetition</li>
-                        <li>3rd Place in Lite Music Guitar Comptetition</li>
-                        <li>3rd Place in Classical singing Comptetition</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-
-        
-        <!-- Experience Section -->
-        <section id="experience" class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">Experience</h2>
-                <p class="section-description">Professional journey and contributions</p>
-            </div>
-            <div class="card-grid">
-
-                <div class="card experience-card">
-                    <div class="card-header">
                         <div>
-                             <img src="https://media.licdn.com/dms/image/v2/D560BAQGRX7niNENJOg/company-logo_200_200/company-logo_200_200/0/1737109991507/calquity_logo?e=1758758400&v=beta&t=BXI0-3RYD4GczFKHUJw5CToezFJ-tK220uv-1lRrjjY" height=100 width=100>
-                             <br><br>
-                            <h3 class="experience-title">Full Stack Developer</h3>
-                            <p class="experience-company">Calquity Technologies Private Limited</p>
+                            <p class="text-3xl font-bold gradient-text">10+</p>
+                            <p>Projects</p>
                         </div>
-                        <span class="experience-date">Aug 2025 - Present</span>
-                    </div>
-                    <ul class="experience-achievements">
-                        <li>Developing and deploying full-stack applications at Calquity to power their financial solutions.</li>
-                        <li>Enhancing existing workflows and optimizing the platform to meet evolving client requirements.</li>
-                    </ul>
-                </div>
-
-
-                <div class="card experience-card">
-                    <div class="card-header">
                         <div>
-                             <img src="https://lco.global/images/p5Ns2jl4v7FxDfN2AOJ9XEP11SE=/6827/width-400/ExoplanetWatch_2-1-ratio-01.png" height=100 width=200>
-                            <h3 class="experience-title">Citizen Scientist</h3>
-                            <p class="experience-company">NASA JPL Exoplanet Watch</p>
+                            <p class="text-3xl font-bold gradient-text">AWS</p>
+                            <p>Certified</p>
                         </div>
-                        <span class="experience-date">Nov 2023 - Jul 2025</span>
                     </div>
-                    <ul class="experience-achievements">
-                        <li>Transforming sequences of star photographs captured by high-end telescopes during exoplanet transits into light curves using Python and EXOTIC Library developed by NASA JPL, increasing accuracy of transit detection</li>
-                        <li>Handled large datasets and generated meaningful insights via data visualizations, contributing to understanding of exo-planetary systems</li>
-                    </ul>
                 </div>
+            </section>
 
-                <div class="card experience-card">
-                    <div class="card-header">
-                        <div>
-                            <img src="https://th.bing.com/th/id/R.81cb214b680685ea51cbbd18f4e5305d?rik=caDrcsS6tVjhZQ&riu=http%3a%2f%2fww1.prweb.com%2fprfiles%2f2018%2f04%2f25%2f15443947%2fSagitec-logo-gray-orange-RGB.png&ehk=8u42ezreSf%2fUuoU%2ftys1ajHwvuHqsjcIL5ZNd4xoG5Y%3d&risl=&pid=ImgRaw&r=0" height=50 width=150>
-                            <br>
-                            <h3 class="experience-title">Data Engineer Intern</h3>
-                            <p class="experience-company">Sagitec Solutions</p>
+            <section id="education" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Education</h2>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="feature-card p-8">
+                        <img src="https://cdn.freelogovectors.net/wp-content/uploads/2023/01/vitlogo-freelogovectors.net_.png" alt="VIT Vellore" class="h-16 mb-4">
+                        <h3 class="text-xl font-bold mb-2">B. Tech Computer Science and Engineering</h3>
+                        <p class="text-gray-400 mb-2">Vellore Institute of Technology, Vellore</p>
+                        <p class="text-sm text-gray-500 mb-4">2021 - 2025</p>
+                        <ul class="list-disc list-inside text-gray-400">
+                            <li>CGPA: 9.13</li>
+                            <li>Received Special Achiever and Achiever Award from VIT for representing the institution at International Events</li>
+                            <li>Consistently ranked in the top percentile with a 9.13 CGPA at VIT Vellore</li>
+                            <li>Facilitated technical workshops in Machine Learning, translating complex ideas into accessible learning experiences.</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card p-8">
+                        <img src="https://th.bing.com/th/id/OIP.3Aa5gxT3KLTxShcU0j6VHQHaHa?r=0&rs=1&pid=ImgDetMain&cb=idpwebpc2" alt="Sree Narayana Mission" class="h-16 mb-4">
+                        <h3 class="text-xl font-bold mb-2">High School PCM and Computer Science</h3>
+                        <p class="text-gray-400 mb-2">Sree Narayana Mission Senior Secondary School, Chennai</p>
+                        <p class="text-sm text-gray-500 mb-4">2006 - 2021</p>
+                        <ul class="list-disc list-inside text-gray-400">
+                            <li>Class 12: 91.8%</li>
+                            <li>Class 10: 83.8%</li>
+                            <li>Gold Medal in Inter House Football Comptetition</li>
+                            <li>1st Place in Cooking without flame Comptetition</li>
+                            <li>3rd Place in Lite Music Guitar Comptetition</li>
+                            <li>3rd Place in Classical singing Comptetition</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Experience</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="relative border-l-2 border-gray-700 pl-8 py-4">
+                        <div class="absolute w-4 h-4 bg-white rounded-full -left-2 top-4 border-4 border-black"></div>
+                        <img src="https://www.calquity.com/calquity-logo-full.png" class="h-12 mb-8" alt="Calquity">
+                        <h3 class="text-xl font-bold">Founding Full Stack Developer</h3>
+                        <p class="text-gray-400 mb-1">Calquity Technologies Private Limited</p>
+                        <p class="text-sm text-gray-500 mb-4">Aug 2025 - Present</p>
+                        <ul class="list-disc list-inside text-gray-400">
+                            <li>Developing and deploying full-stack applications at Calquity to power their financial solutions.</li>
+                            <li>Enhancing existing workflows and optimizing the platform to meet evolving client requirements.</li>
+                        </ul>
+                    </div>
+                    <div class="relative border-l-2 border-gray-700 pl-8 py-4">
+                        <div class="absolute w-4 h-4 bg-white rounded-full -left-2 top-4 border-4 border-black"></div>
+                        <img src="https://exoplanets.nasa.gov/internal_resources/3009/Exoplanet_Watch_Emblem.png1" class="h-20 mb-8" alt="NASA JPL">
+                        <h3 class="text-xl font-bold">Citizen Scientist</h3>
+                        <p class="text-gray-400 mb-1">NASA JPL Exoplanet Watch</p>
+                        <p class="text-sm text-gray-500 mb-4">Nov 2023 - Jul 2025</p>
+                        <ul class="list-disc list-inside text-gray-400">
+                            <li>Transforming sequences of star photographs captured by high-end telescopes during exoplanet transits into light curves using Python and EXOTIC Library developed by NASA JPL, increasing accuracy of transit detection</li>
+                            <li>Handled large datasets and generated meaningful insights via data visualizations, contributing to understanding of exo-planetary systems</li>
+                        </ul>
+                    </div>
+                    <div class="relative border-l-2 border-gray-700 pl-8 py-4">
+                        <div class="absolute w-4 h-4 bg-white rounded-full -left-2 top-4 border-4 border-black"></div>
+                        <img src="https://th.bing.com/th/id/R.81cb214b680685ea51cbbd18f4e5305d?rik=caDrcsS6tVjhZQ&riu=http%3a%2f%2fww1.prweb.com%2fprfiles%2f2018%2f04%2f25%2f15443947%2fSagitec-logo-gray-orange-RGB.png&ehk=8u42ezreSf%2fUuoU%2ftys1ajHwvuHqsjcIL5ZNd4xoG5Y%3d&risl=&pid=ImgRaw&r=0" class="h-12 mb-8" alt="Sagitec">
+                        <h3 class="text-xl font-bold">Data Engineer Intern</h3>
+                        <p class="text-gray-400 mb-1">Sagitec Solutions</p>
+                        <p class="text-sm text-gray-500 mb-4">Sept 2023 - Dec 2023</p>
+                        <ul class="list-disc list-inside text-gray-400">
+                            <li>Developed a dynamic data archiving and purging script using SQL, ensuring compliance with data retention policies and freeing up 20% of database space, improving query performance by 25%</li>
+                            <li>Improved data management processes and business performance by contributing to efficient data storage solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Featured Projects</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card p-8">
+                        <img src="https://www.icons101.com/icon_png/size_512/id_77231/Terminal.png" class="h-16 mx-auto mb-4" alt="Commandor">
+                        <h3 class="text-xl font-bold mb-2">Commandor</h3>
+                        <p class="text-gray-400 mb-4">An intelligent terminal assistant that uses AI to convert natural language to shell commands.</p>
+                        <a href="https://github.com/ravin-d-27/Commandor" class="text-blue-400 hover:underline">View Project &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <img src="https://private-user-images.githubusercontent.com/94217598/375645903-81f3e52a-ad5a-47b5-a7e1-bdc9ee2de508.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTkyNTI5MTIsIm5iZiI6MTc1OTI1MjYxMiwicGF0aCI6Ii85NDIxNzU5OC8zNzU2NDU5MDMtODFmM2U1MmEtYWQ1YS00N2I1LWE3ZTEtYmRjOWVlMmRlNTA4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA5MzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwOTMwVDE3MTY1MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNiNjkwNGRkZGNmYTVkNTEwYmI5Yzg1ODI0NThjOGMzMDVlM2I5NjU5MGMwZGZjOWRlNjBlYWI0N2M1ZWY3ZDEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.MdA1BFi9zJLGvyvtyk8tDzPHsRzVdDeTQB136tNoM0g" class="h-16 mx-auto mb-4" alt="PyDeepFlow">
+                        <h3 class="text-xl font-bold mb-2">PyDeepFlow</h3>
+                        <p class="text-gray-400 mb-4">A Python library for building and training deep learning models with an emphasis on ease of use.</p>
+                        <a href="https://github.com/ravin-d-27/PyDeepFlow" class="text-blue-400 hover:underline">View Project &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <img src="https://t4.ftcdn.net/jpg/02/66/53/89/360_F_266538918_Ysybi207NwQvGonrSfGdum8IUlWpirP6.jpg" class="h-16 mx-auto mb-4" alt="Prompt Knight">
+                        <h3 class="text-xl font-bold mb-2">Prompt Knight</h3>
+                        <p class="text-gray-400 mb-4">Build intelligent chatbot APIs in seconds with RAG tech. Train on your data and deploy instantly.</p>
+                        <a href="https://prompt-knight.vercel.app/" class="text-blue-400 hover:underline">View Project &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <img src="https://rmld-file-server.vercel.app/static/logo.png" class="h-16 mx-auto mb-4" alt="Cloud Storage">
+                        <h3 class="text-xl font-bold mb-2">Personal Cloud Storage Server</h3>
+                        <p class="text-gray-400 mb-4">A Django-based web application for secure file management with AWS S3 and Supabase Postgres.</p>
+                        <a href="https://github.com/ravin-d-27/File_Transfer_Server" class="text-blue-400 hover:underline">View Project &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <img src="https://python-hunt.vercel.app/static/plogo1.png" class="h-16 mx-auto mb-4" alt="Python Hunt">
+                        <h3 class="text-xl font-bold mb-2">Python Hunt</h3>
+                        <p class="text-gray-400 mb-4">An OpenSource Django-based product for Python education with 18 active contributors.</p>
+                        <a href="https://github.com/X-Evolve/Python_Hunt" class="text-blue-400 hover:underline">View Project &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <img src="https://img.freepik.com/free-vector/databases-set-three_78370-6669.jpg?semt=ais_hybrid" class="h-16 mx-auto mb-4" alt="Data Archival">
+                        <h3 class="text-xl font-bold mb-2">Data Archival and Purging Scripts</h3>
+                        <p class="text-gray-400 mb-4">SQL Scripts to perform Data Archiving and Purging with email updates using Microsoft SQL Server.</p>
+                        <a href="https://github.com/ravin-d-27/Data_Archiving_and_Purging" class="text-blue-400 hover:underline">View Project &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Publications</h2>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="feature-card p-8">
+                        <h3 class="text-xl font-bold mb-2">Entropy to Elegance: The Systematic Approach to Crushing Distractions and Achieving Goals</h3>
+                        <p class="text-gray-400 mb-4">A practical framework to develop genuine, lasting discipline, backed by two years of deep research.</p>
+                        <a href="https://www.amazon.in/dp/B0FL16QC5N" class="text-blue-400 hover:underline">Read Book &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <h3 class="text-xl font-bold mb-2">Malware Classification Using Machine Learning and Deep Learning: A Comprehensive Approach</h3>
+                        <p class="text-gray-400 mb-4">Investigates comprehensive machine learning and deep learning techniques for malware classification.</p>
+                        <a href="https://www.cureusjournals.com/articles/5024-malware-classification-using-machine-learning-and-deep-learning-a-comprehensive-approach#!/" class="text-blue-400 hover:underline">Read Paper &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <h3 class="text-xl font-bold mb-2">Artificial Intelligence in the Helm of Space Exploration and Discovery</h3>
+                        <p class="text-gray-400 mb-4">Explores how robotics and AI are revolutionizing space exploration.</p>
+                        <a href="https://www.researchgate.net/publication/390756009_Artificial_Intelligence_in_the_Helm_of_Space_Exploration_and_Discovery" class="text-blue-400 hover:underline">Read Book &rarr;</a>
+                    </div>
+                    <div class="feature-card p-8">
+                        <h3 class="text-xl font-bold mb-2">Feature Engineering for False Positive Exoplanet Prediction: A Deep Learning Approach</h3>
+                        <p class="text-gray-400 mb-4">Introduces a novel feature engineering approach for exoplanet prediction using deep learning.</p>
+                        <a href="https://ijisae.org/index.php/IJISAE/article/view/6125" class="text-blue-400 hover:underline">Read Paper &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="volunteering" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Volunteering</h2>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="feature-card p-8 text-center">
+                        <img src="https://miro.medium.com/v2/resize:fit:2400/2*zUr797-ZzVz4Xj_F6GUnZQ.png" class="h-20 mx-auto mb-4" alt="IEEE">
+                        <h3 class="text-xl font-bold">Senior Core Committee Member</h3>
+                        <p class="text-gray-400">IEEE VIT Student Chapter</p>
+                        <p class="text-sm text-gray-500">Mar 2022 - Dec 2024</p>
+                    </div>
+                    <div class="feature-card p-8 text-center">
+                        <img src="https://sedsvit.in/img/vtNebula_black.png" class="h-20 mx-auto mb-4" alt="SEDS">
+                        <h3 class="text-xl font-bold">Core Committee Member</h3>
+                        <p class="text-gray-400">SEDS VIT Student Chapter</p>
+                        <p class="text-sm text-gray-500">Apr 2023 - Dec 2024</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="py-20">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Technical Skills</h2>
+                <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="feature-card p-6">
+                        <h3 class="text-xl font-bold mb-4">Languages</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Java</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">C#</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">SQL</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
                         </div>
-                        <span class="experience-date">Sept 2023 - Dec 2023</span>
                     </div>
-                    <ul class="experience-achievements">
-                        <li>Developed a dynamic data archiving and purging script using SQL, ensuring compliance with data retention policies and freeing up 20% of database space, improving query performance by 25%</li>
-                        <li>Improved data management processes and business performance by contributing to efficient data storage solutions</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section fade-in">
-            
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-description">Showcasing technical expertise through innovative solutions</p>
-            </div>
-<div class="card-grid card-grid-3">
-
-
-
-            
-                <div class="card">
-                    <div class="project-header">
-                        <img src="https://icon-library.com/images/terminal-icon-png/terminal-icon-png-22.jpg" height=100 width=100>
-                        <h3 class="project-title">Commandor</h3>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Terminal</span>
-                        <span class="tech-tag">Artificial Intelligence</span>
-                    </div>
-                    <p class="project-description">
-                        An intelligent terminal assistant that uses AI to convert natural language to shell commands and answer questions directly using special commands.
-                        Commandor is now Open-Source, to achieve greater availability and community contributions.
-                    </p>
-                    <a href="https://github.com/ravin-d-27/Commandor" class="project-link">
-                        View Project →
-                    </a>
-                </div>
-
-
-                <div class="card">
-                    <div class="project-header">
-                        <img src="https://pypi-camo.freetls.fastly.net/c22d3e0a5295eaf5a69be272db54863de5159276/68747470733a2f2f6769746875622e636f6d2f757365722d6174746163686d656e74732f6173736574732f38316633653532612d616435612d343762352d613765312d626463396565326465353038" height=100 width=100>
-                        <h3 class="project-title">PyDeepFlow</h3>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">Neural Networks</span>
-                    </div>
-                    <p class="project-description">
-                        A Python library designed for building and training deep learning models with an emphasis on ease of use and flexibility. It abstracts many of the complexities found in traditional deep learning libraries while still offering powerful functionality.
-                    </p>
-                    <a href="https://github.com/ravin-d-27/PyDeepFlow" class="project-link">
-                        View Project →
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="project-header">
-                        <img src="https://t4.ftcdn.net/jpg/02/66/53/89/360_F_266538918_Ysybi207NwQvGonrSfGdum8IUlWpirP6.jpg" height=100 width=100>
-                        <h3 class="project-title">Prompt Knight</h3>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Vercel</span>
-                    </div>
-                    <p class="project-description">
-                        PromptKnight lets businesses build intelligent chatbot APIs in seconds with RAG tech: Train on your data, track usage, and deploy instantly. Scalable, transparent, and no AI expertise needed. Building it for the World's Largest Hackathon.
-                    </p>
-                    <a href="https://prompt-knight.vercel.app/" class="project-link">
-                        View Project →
-                    </a>
-                </div>
-
-
-            
-                <div class="card">
-                    <div class="project-header">
-                         <img src="https://rmld-file-server.vercel.app/static/logo.png" height=100 width=100>
-                        <h3 class="project-title">Personal Cloud Storage Server</h3>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">AWS S3</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                    <p class="project-description">
-                        A Django-based web application deployed on Vercel that allows users to upload, manage, download and share files securely with AWS S3 Buckets and Supabase Postgres Cloud Services.
-                    </p>
-                    <a href="https://github.com/ravin-d-27/File_Transfer_Server" class="project-link">
-                        View Project →
-                    </a>
-                </div>
-
-                <div class="card">
-                    <div class="project-header">
-                        <img src="https://python-hunt.vercel.app/static/plogo1.png" height=100 width=100>
-                        <h3 class="project-title">Python Hunt</h3>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Vercel</span>
-                    </div>
-                    <p class="project-description">
-                        Founded and lead Python Hunt, an OpenSource Django-based product designed for Python education. As lead developer, I manage 18 active contributors, write backend logic and maintain the repository, and deploy the site under X-Evolve.
-                    </p>
-                    <a href="https://github.com/X-Evolve/Python_Hunt" class="project-link">
-                        View Project →
-                    </a>
-                </div>
-
-                
-
-                <div class="card">
-                    <div class="project-header">
-                        <img src="https://img.freepik.com/free-vector/databases-set-three_78370-6669.jpg?semt=ais_hybrid" height=100 width=100>
-                        <h3 class="project-title">Data Archival and Purging Scripts</h3>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">TSQL</span>
-                        <span class="tech-tag">Database</span>
-                        <span class="tech-tag">SQL Server</span>
-                    </div>
-                    <p class="project-description">
-                        This repository contains the SQL Scripts to perform Data Archiving and Purging along with Proper updates via Email using Microsoft SQL Server. This is a Real Time project which I was working on for my internship as a Data Engineer Intern at Sagitec Solutions.
-                    </p>
-                    <a href="https://github.com/ravin-d-27/Data_Archiving_and_Purging" class="project-link">
-                        View Project →
-                    </a>
-                </div>
-
-
-                <div class="card">
-                    <div class="project-header">
-                        <img src="https://tse1.mm.bing.net/th/id/OIP.YNhsFQLrtUs7FtS5L4harAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" height=100 width=100>
-                        <h3 class="project-title">Asset Tracker</h3>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">ASP.NET</span>
-                        <span class="tech-tag">Entity Framework Core</span>
-                        <span class="tech-tag">SQL Server</span>
-                    </div>
-                    <p class="project-description">
-                        Asset Tracker is a minimal, modern web application built to help organizations efficiently track and manage their assets. The goal of Asset Tracker is to replace spreadsheets and manual asset logs with a streamlined, intuitive web-based system.
-                    </p>
-                    <a href="https://github.com/ravin-d-27/AssetTracker" class="project-link">
-                        View Project →
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Publications Section -->
-        <section id="publications" class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">Publications</h2>
-                <p class="section-description">Contributing to academic research and knowledge sharing</p>
-            </div>
-            <div class="card-grid">
-                <div class="card publication-card">
-                
-                    <h3 class="publication-title">Entropy to Elegance: The Systematic Approach to Crushing Distractions and Achieving Goals</h3>
-                    <p class="publication-description">
-                        Entropy to Elegance is a clear and actionable book for anyone who’s tired of starting over, battling distractions, or falling short of their potential. Backed by two years of deep research, experimentation, and real-life application, this book offers a practical framework to develop genuine, lasting discipline. Whether you're a student, entrepreneur, creative, or simply someone who wants to follow through on your goals, this is your blueprint.
-                    </p>
-                    <a href="https://www.amazon.in/dp/B0FL16QC5N" class="publication-link">Read Book →</a>
-                </div>
-                <div class="card publication-card">
-                
-                    <h3 class="publication-title">Malware Classification Using Machine Learning and Deep Learning: A Comprehensive Approach</h3>
-                    <p class="publication-description">
-                        This research work investigates comprehensive machine learning and deep learning techniques for malware classification, addressing the limitations of traditional signature-based detection methods. 
-                    </p>
-                    <a href="https://www.cureusjournals.com/articles/5024-malware-classification-using-machine-learning-and-deep-learning-a-comprehensive-approach#!/" class="publication-link">Read Paper →</a>
-                </div>
-                <div class="card publication-card">
-                    
-                    <h3 class="publication-title">Artificial Intelligence in the Helm of Space Exploration and Discovery</h3>
-                    <p class="publication-description">
-                        The book explores how robotics and AI are revolutionizing space exploration, making robots essential companions on our celestial missions. It covers AI's role in mission planning and execution, ensuring efficiency and success.
-                    </p>
-                    <a href="https://www.researchgate.net/publication/390756009_Artificial_Intelligence_in_the_Helm_of_Space_Exploration_and_Discovery" class="publication-link">Read Book →</a>
-                </div>
-
-                <div class="card publication-card">
-                
-                    <h3 class="publication-title">Feature Engineering for False Positive Exoplanet Prediction: A Deep Learning Approach</h3>
-                    <p class="publication-description">
-                        Introduces a novel feature engineering approach for exoplanet prediction using deep learning to minimize false positives.
-                    </p>
-                    <a href="https://ijisae.org/index.php/IJISAE/article/view/6125" class="publication-link">Read Paper →</a>
-                </div>
-
-                <div class="card publication-card">
-                
-                    <h3 class="publication-title">A Comparative Analysis Of Deep Learning For Remaining Useful Life Estimation</h3>
-                    <p class="publication-description">
-                        A study on DL models for estimating the RUL of batteries, highlighting each approach's strengths and weaknesses.
-                    </p>
-                    <a href="https://www.kuey.net/index.php/kuey/article/view/4709" class="publication-link">Read Paper →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements Section -->
-        <section class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">Achievements</h2>
-                <p class="section-description">Recognition for excellence and contributions</p>
-            </div>
-            <ul class="achievements-list">
-                <li class="achievement-item">
-                    <p class="achievement-text">
-                        <strong>AWS Certified Solutions Architect - Associate</strong><br>Demonstrated expertise in designing distributed systems on AWS
-                    </p>
-                </li>
-                <li class="achievement-item">
-                    <p class="achievement-text">
-                        <strong>Active Hacktoberfest 2022, 2023 & 2024 contributor</strong><br>Completed four open-source contributions during each year, receiving exclusive swag items and credits
-                    </p>
-                </li>
-                <li class="achievement-item">
-                    <p class="achievement-text">
-                        <strong>Letter of Appreciation</strong><br>Awarded by VIT University as Special Achiever and Achiever for exemplary performance in international and national events
-                    </p>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="volunteering" class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">Volunteering</h2>
-                <p class="section-description">Clubs and Chapters</p>
-            </div>
-            <div class="card-grid">
-                <div class="card experience-card">
-                    <div class="card-header">
-                        <div>
-                             <img src="https://miro.medium.com/v2/resize:fit:2400/2*zUr797-ZzVz4Xj_F6GUnZQ.png" height=100 width=100>
-                             <br><br>
-                            <h3 class="experience-title">Senior Core Committee Member</h3>
-                            <p class="experience-company">IEEE VIT Student Chapter</p>
+                    <div class="feature-card p-6">
+                        <h3 class="text-xl font-bold mb-4">Frameworks</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Next.js</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">React.js</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Django</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Flask</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">FastAPI</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">ASP.NET Core</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Node.js</span>
                         </div>
-                        <span class="experience-date">Mar 2022 - Dec 2024</span>
                     </div>
-                </div>
-
-                <div class="card experience-card">
-                    <div class="card-header">
-                        <div>
-                            <img src="https://sedsvit.in/img/vtNebula_black.png" height=100 width=100>
-                            <br><br>
-                            <h3 class="experience-title">Core Committee Member</h3>
-                            <p class="experience-company">SEDS VIT Student Chapter</p>
+                    <div class="feature-card p-6">
+                        <h3 class="text-xl font-bold mb-4">Libraries</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">TensorFlow</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">PyTorch</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Pandas</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">NumPy</span>
                         </div>
-                        <span class="experience-date">Apr 2023 - Dec 2024</span>
+                    </div>
+                    <div class="feature-card p-6">
+                        <h3 class="text-xl font-bold mb-4">Databases</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">MySQL</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">SQLite</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">SQL Server</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Oracle</span>
+                        </div>
+                    </div>
+                    <div class="feature-card p-6 col-span-2 md:col-span-4">
+                        <h3 class="text-xl font-bold mb-4">Cloud & DevOps</h3>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">AWS</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Azure</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Google Cloud Platform</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Git</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">CI/CD</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Linux</span>
+                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Vercel</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Skills Section -->
-        <section class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-description">Core competencies and technologies</p>
-            </div>
-            <div class="skills-grid">
-                <div class="card skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                    </div>
-                </div>
-
-                <div class="card skill-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">ASP.NET Core</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                    </div>
-                </div>
-
-                <div class="card skill-category">
-                    <h3>Data & Analytics</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PowerBI</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">ETL</span>
-                        <span class="skill-tag">Data Mining</span>
-                    </div>
-                </div>
-
-                <div class="card skill-category">
-                    <h3>Cloud & DevOps</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Google Cloud Platform</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">CI/CD</span>
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">Vercel</span>
-                    </div>
-                </div>
-
-                <div class="card skill-category">
-                    <h3>Databases</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">SQLite</span>
-                        <span class="skill-tag">SQL Server</span>
-                        <span class="skill-tag">Oracle</span>
-                    </div>
-                </div>
-
-                <div class="card skill-category">
-                    <h3>Specializations</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Web Development</span>
-                        <span class="skill-tag">LLM Fine Tuning</span>
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">Data Engineering</span>
-                        <span class="skill-tag">Risk Management</span>
-                        <span class="skill-tag">System Design</span>
-                        <span class="skill-tag">API Development</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section fade-in">
-            <div class="section-header">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-description">Ready to collaborate on exciting projects</p>
-            </div>
-            <div class="contact-content">
-                <p style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem;">
-                    I'm always interested in discussing new opportunities, innovative projects, or just connecting with fellow developers. Feel free to reach out!
-                </p>
-                <div class="contact-links">
-                    <a href="https://linkedin.com/in/ravin-d-035922216" class="contact-link">
-                        <img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG7.png" height=50 width=50>
-                        <span>LinkedIn</span>
+            <section id="contact" class="py-20 text-center">
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Let's Connect</h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-8">I'm always interested in discussing new opportunities, innovative projects, or just connecting with fellow developers. Feel free to reach out!</p>
+                <div class="flex justify-center gap-8">
+                    <a href="https://linkedin.com/in/ravin-d-035922216" class="flex items-center gap-2 hover:text-white transition-colors">
+                        <img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG7.png" class="h-6" alt="LinkedIn">
+                        LinkedIn
                     </a>
-                    <a href="https://github.com/ravin-d-27" class="contact-link">
-                        <img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Symbol.png" height=45 width=70>
-                        <span>GitHub</span>
+                    <a href="https://github.com/ravin-d-27" class="flex items-center gap-2 hover:text-white transition-colors">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Symbol.png" class="h-6" alt="GitHub">
+                        GitHub
                     </a>
                 </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-gray-800 mt-20">
+            <div class="container mx-auto px-4 py-8 text-center text-gray-500">
+                &copy; 2025 Ravin D. All Rights Reserved.
             </div>
-        </section>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Ravin D All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.875rem;">
-                Built with passion using modern web technologies
-            </p>
-        </div>
-    </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        // Smooth scrolling for navigation links
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from("#hero h1, #hero p, #hero .flex", {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        gsap.utils.toArray('.feature-card').forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.6
+            });
+        });
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections for animation
-        document.querySelectorAll('.fade-in').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Active navigation highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.style.color = 'var(--text-secondary)';
-                link.style.background = 'transparent';
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.style.color = 'var(--text-primary)';
-                    link.style.background = 'var(--background-secondary)';
-                }
-            });
-        });
-
-        // Add typing effect to hero title
-        const heroTitle = document.querySelector('.hero-title');
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        };
-        
-        setTimeout(typeWriter, 500);
-
-        // Add hover effects to cards
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Add click effect to buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.3);
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                `;
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-
-        // Add CSS for ripple animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
